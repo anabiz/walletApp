@@ -2,7 +2,7 @@ import createError, { HttpError } from "http-errors";
 import express, { Request, Response, NextFunction } from "express";
 
 import logger from "morgan";
-import Route from "./routes"; 
+import v1Route from "./routes"; 
 
 
 const app = express();
@@ -11,7 +11,7 @@ app.disable("x-powered-by");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/", Route);
+app.use("/apiv1", v1Route);
 
 // catch 404 and forward to error handler
 app.use(function (_req: Request, _res: Response, next: NextFunction) {
