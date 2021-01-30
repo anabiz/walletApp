@@ -7,6 +7,7 @@ import fundaccount from "../controller/fundaccount/fundaccount";
 import promotion from "../controller/promotion/promotion";
 import fundapproval from "../controller/fundapproval/fundapproval";
 import { loginAuth } from "../middleware/loginAuth"
+//import createAccount from "../controller/createAccount/createAccount";
 
 const router = Router();
 
@@ -25,6 +26,8 @@ router.post("/fundaccount", fundaccount);
 router.post("/promotion", promotion);
 
 router.post("/fundapproval", fundapproval);
+
+//router.post("/createaccount", loginAuth, createAccount);
 
 
 export default router;

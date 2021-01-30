@@ -16,16 +16,13 @@ function initialize(passport: any) {
     console.log("the user", user);
 
     if (user === undefined) {
-      console.log("No such User");
       return done(null, false, { maessage: "No user with that email" });
     }
 
     try {
       if (await bcrypt.compare(password, user.password!)) {
-        console.log("correct password");
         return done(null, user);
       } else {
-        console.log("Incorrect password");
         return done(null, false, { maessage: "password incorrect" });
       }
     } catch (error) {
