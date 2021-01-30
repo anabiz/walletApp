@@ -3,7 +3,6 @@ import express, { Request, Response, NextFunction } from "express";
 
 import logger from "morgan";
 import Route from "./routes"; 
-import { checkValidJsonPayload } from "./middleware/checkValidJsonPayload";
 
 
 const app = express();
@@ -12,7 +11,6 @@ app.disable("x-powered-by");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(checkValidJsonPayload);
 app.use("/", Route);
 
 // catch 404 and forward to error handler
