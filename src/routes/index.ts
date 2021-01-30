@@ -6,6 +6,7 @@ import withdrawal from "../controller/withdrawal/withdrawal";
 import fundaccount from "../controller/fundaccount/fundaccount";
 import promotion from "../controller/promotion/promotion";
 import fundapproval from "../controller/fundapproval/fundapproval";
+import { loginAuth } from "../middleware/loginAuth"
 
 const router = Router();
 
@@ -15,7 +16,7 @@ router.post("/login", login);
 /* Post user registration*/
 router.post("/register", register);
 
-router.get("/transaction", transaction);
+router.get("/transaction", loginAuth, transaction);
 
 router.post("/withdrawal", withdrawal);
 
