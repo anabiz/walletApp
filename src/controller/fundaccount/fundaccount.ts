@@ -3,8 +3,6 @@ import  {getUserInfoFromToken} from "../../util/index";
 import  * as fund from "../../services/userService";
 import {validateFundAcount} from "../../schema/validation/index";
 import { getMainCurrency } from "../../services/currencyService";
-//import {getCurrencyByName, getMainCurrency} from "../../services/currencyService"
-
 
 const fundaccount = async (req: Request, res: Response) => {
  
