@@ -22,3 +22,25 @@ export async function getUnapprovedTransactions() {
     return -1;
   }
 }
+
+export async function approveTransaction(id: string) {
+  try {
+    return db
+      .query(sql`UPDATE transactions SET is_approved = true WHERE id = ${id} RETURNING *`)
+      .then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+}
+
+export async function getTransactionById(id: string) {
+  try {
+    return db
+      .query(sql`SELECT * FROM transactions WHERE id = ${id}`)
+      .then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return -1;
+  }
+}
