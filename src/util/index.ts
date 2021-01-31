@@ -19,23 +19,6 @@ export const getUserInfoFromToken = (token: string) => {
   return user;
 };
 
-// export const getExchangeRate = async (baseCurrency: string, targetCurrency:string, amount: number): Promise<number | null>=> {
-// const url = `http://data.fixer.io/api/latest?access_key=${process.env.API_ACCESS_KEY}`;
-// let output: number | null = 0;
-// Request.get(url, (error, _response, body) => {
-//     if(error) {
-//         output =  error;
-//     }
-//     const result = JSON.parse(body) 
-//     const rates = result.rates;
-//     const newBase = amount/rates[`${baseCurrency}`];
-//     const rate = newBase * rates[`${targetCurrency}`];
-//     console.log(rate)
-//     output = rate;
-// });
-// return output;
-// };
-
 export const getExchangeRate = async (baseCurrency: string, targetCurrency:string, amount: number): Promise<number>=> {
   const url = `http://data.fixer.io/api/latest?access_key=${process.env.API_ACCESS_KEY}`;
   const options = {

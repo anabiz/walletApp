@@ -28,10 +28,12 @@ const fundaccount = async (req: Request, res: Response) => {
       }
       
     }else{
-      res.status(400).json({message:error.message})
+      res.status(400).json({message:error.message});
+      return;
     } 
   }catch(error){
-    res.status(500).json({message:error.message})
+    res.status(500).json({message:error.message});
+    return;
   }
 };
 

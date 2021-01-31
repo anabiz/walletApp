@@ -23,12 +23,15 @@ const fundapproval = async (req: Request, res: Response) => {
             return;
         }
       }else{
-        res.status(400).json({ message: "transaction already approved" })
+        res.status(400).json({ message: "transaction already approved" });
+        return;
       }
-      res.status(400).json({ message: "input require" })
+      res.status(400).json({ message: "input require" });
+      return;
     }
   } catch (error) {
     res.status(400).json({ message: error.message })
+    return;
   }
 };
 
