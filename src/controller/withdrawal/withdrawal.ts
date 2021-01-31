@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
+import {createCurrency} from "../../services/currencyService"
 
-const withdrawal = async(_req: Request, res: Response) => {
-  
-  res.status(200).json({message:"hello"})
+const withdrawal = async(req: Request, res: Response) => {
+  const d = await createCurrency(req.body.name)
+  res.status(200).json({message:d})
 
 };
 

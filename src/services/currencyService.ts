@@ -22,3 +22,27 @@ export async function getCurrencyByName(currencyName: string) {
     return -1;
   }
 }
+
+export async function getMainCurrency(userid: string) {
+  try {
+    return await db.query(
+      sql`SELECT currency.name, currency.id FROM wallets 
+      JOIN currency ON wallets.currency_id = currency.id WHERE wallets.user_id = ${userid} AND wallets.is_main = true`,
+    ).then(([data]) => data);;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+
+// export async function getMainCurrency(userid: string) {
+//   try {
+//     return await db.query(
+//       sql`SELECT currency.name, wallets.user_id, wallets.amount, wallets.currency_id FROM wallets 
+//       JOIN currency ON wallets.currency_id = currency.id WHERE wallets.user_id = ${userid}`,
+//     );
+//   } catch (error) {
+//     console.error(error);
+//     return error;
+//   }
+// }

@@ -21,7 +21,7 @@ router.get("/transaction", loginAuth, transaction);
 
 router.post("/withdrawal", withdrawal);
 
-router.post("/fundaccount", fundaccount);
+router.post("/fundaccount", loginAuth, fundaccount);
 
 router.post("/promotion", promotion);
 

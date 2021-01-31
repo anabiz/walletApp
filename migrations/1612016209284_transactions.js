@@ -26,7 +26,7 @@ exports.up = pgm => {
             references: '"currency"'
         },
         amount: {
-            type: "integer",
+            type: "numeric(15,4)",
             notNull: true,
         },
         is_approved: {

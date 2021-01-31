@@ -1,6 +1,11 @@
 
 import { db, sql } from "../store/pg";
 import { userType } from "../schema/types/index";
+//import { getUserWalletDetails } from "../services/accountService";
+import { fundAccountTypeEntity } from "../schema/types/index";
+import * as transaction from "../services/transactionService";
+import { getCurrencyByName } from "../services/currencyService";
+import { getExchangeRate } from "../util/index"
 
 export async function getUserByEmail(email: string) {
   try {
@@ -36,4 +41,24 @@ export async function getUserById(id: string) {
     console.error(error);
     return -1;
   }
+}
+
+export async function fundElitAccount(){
+
+}
+
+export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
+  const currency_id = (await getCurrencyByName(creditDetail.main_currency)).id;
+  let amount = creditDetail.amount;
+  if(creditDetail.input_currency !== creditDetail.main_currency){
+  amount = await getExchangeRate(creditDetail.input_currency,creditDetail.main_currency,creditDetail.amount); 
+  }
+  const input = {
+    user_id:creditDetail.user_id,
+    amount,
+    currency_id,
+    transaction_type: "credit"
+  }
+  console.log(input)
+  return await transaction.createTransaction(input);
 }

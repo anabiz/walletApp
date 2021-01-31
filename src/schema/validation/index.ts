@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { userType } from "../types/index"
+import { fundAccountTypeDto, userType } from "../types/index"
 
 const validateUsers = (user: userType) => {
   user.user_type =user.user_type.toLowerCase();
@@ -18,5 +18,15 @@ const validateUsers = (user: userType) => {
   });
 };
 
+const validateFundAcount = (input: fundAccountTypeDto) => {
+  const schema = Joi.object({
+    amount: Joi.number().required(),
+    currency: Joi.string().min(3).max(3).required(),
+  });
+  return schema.validate(input, {
+    abortEarly: false,
+  });
+};
 
-export { validateUsers }
+
+export { validateUsers, validateFundAcount }
