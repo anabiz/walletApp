@@ -24,7 +24,7 @@ router.post("/withdrawal", withdrawal);
 
 router.post("/fundaccount", loginAuth, fundaccount);
 
-router.post("/admin/promotion", adminAuthorization, promotion);
+router.post("/admin/promotion/:id", adminAuthorization, promotion);
 
 router.post("/admin/adminfund/:userId", adminAuthorization, adminFund);
 

@@ -11,6 +11,16 @@ export async function getNoobWalletByUserId(userId: string) {
   }
 }
 
+export async function deleteWalletById(walletId: string) {
+  try {
+    return db
+      .query(sql`DELETE FROM wallets WHERE id = ${walletId}`)
+      .then((data) => data);
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+}
 
 export async function updateWalletBallance(amount: number, userId: string) {
   try {
@@ -45,6 +55,28 @@ export async function getElitWalletByCurrencyId(currency_id: string, userId: str
   }
 }
 
+export async function getAllElitWallet(userId: string) {
+  try {
+    return db
+      .query(sql`SELECT * FROM wallets WHERE user_id = ${userId}`)
+      .then((data) => data);
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
+
+export async function getAllElitWallet1(userid: string) {
+  try {
+    return await db.query(
+      sql`SELECT currency.name, wallets.currency_id, wallets.id, wallets.is_main, wallets.amount FROM wallets 
+        JOIN currency ON wallets.currency_id = currency.id WHERE wallets.user_id = ${userid}`,
+    ).then((data) => data);;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
 
 export async function getMainWalletAndCurrencyInfo(userid: string) {
   try {
