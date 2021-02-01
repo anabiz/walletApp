@@ -6,7 +6,6 @@ import {updateWalletBallance} from "../../services/walletService"
 const fundapproval = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    console.log(id);
     if (id) {
       const transaction = await getTransactionById(id);
       console.log(transaction)

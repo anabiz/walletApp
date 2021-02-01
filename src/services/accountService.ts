@@ -19,7 +19,7 @@ export async function createUserAccount(data: accountTypeEntity) {
   try {
     return db
       .query(
-        sql`INSERT INTO wallets(amount, currency_id, user_id, is_main) VALUES(${data.amount}, ${data.currency_id}, ${data.user_id},${true}) RETURNING *`,
+        sql`INSERT INTO wallets(amount, currency_id, user_id, is_main) VALUES(${data.amount}, ${data.currency_id}, ${data.user_id},${data.is_main}) RETURNING *`,
       )
       .then(([data]) => data);
   } catch (error) {

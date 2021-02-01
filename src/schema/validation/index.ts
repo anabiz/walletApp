@@ -22,6 +22,7 @@ const validateFundAcount = (input: fundAccountTypeDto) => {
   const schema = Joi.object({
     amount: Joi.number().required(),
     currency: Joi.string().min(3).max(3).required(),
+    transaction_type: Joi.string().min(5).max(6)
   });
   return schema.validate(input, {
     abortEarly: false,

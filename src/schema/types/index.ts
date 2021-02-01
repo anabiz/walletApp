@@ -10,11 +10,13 @@ export type accountTypeEntity = {
     currency_id: string,
     amount: number,
     user_id: string,
+    is_main: boolean
 }
 
 export type fundAccountTypeDto = {
     currency: string,
     amount: number,
+    transaction_type: string,
 }
 
 export type fundAccountTypeEntity = {

@@ -43,10 +43,6 @@ export async function getUserById(id: string) {
   }
 }
 
-export async function fundElitAccount(){
-
-}
-
 export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
   const currency_id = (await getCurrencyByName(creditDetail.main_currency)).id;
   let amount = creditDetail.amount;
@@ -59,6 +55,5 @@ export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
     currency_id,
     transaction_type: "credit"
   }
-  console.log(input)
   return await transaction.createTransaction(input);
 }

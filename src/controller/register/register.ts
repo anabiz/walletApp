@@ -14,9 +14,8 @@ const register = async (req: Request, res: Response) => {
             value.password = hash;
             const user = await createUser(value);
             const currency = await getCurrencyByName(value.main_currency);
-            const data: accountTypeEntity = {amount:0, currency_id:currency.id, user_id:user.id};
-            const input = {...data, is_main:true}
-            await createUserAccount(input);
+            const data: accountTypeEntity = {amount:0, currency_id:currency.id, user_id:user.id, is_main:true};
+            await createUserAccount(data);
             res.status(200).json({ message: user });
             return;
         }
