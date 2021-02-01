@@ -1,4 +1,4 @@
-# rule validation-api
+# Wallet System Api
 
 Wallet App is a simple web application that allows users to create account, fund their account, and can equally withdraw from their account. It is a RESTful API built with Postgresql Database and Node.js for the backend. It features Json Web Token implementation for the authentication.
 
