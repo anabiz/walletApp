@@ -19,7 +19,6 @@ const fundaccount = async (req: Request, res: Response) => {
       if (user.user_type === "elit") {
         const targetCurrency = await getCurrencyByName(value.currency);
         const account = await getElitWalletByCurrencyId(targetCurrency.id, user.id);
-        console.log(account);
         if (!account && value.transaction_type === "credit") {
           const input={
             user_id: user.id,

@@ -35,14 +35,3 @@ export async function getMainCurrency(userid: string) {
   }
 }
 
-// export async function getMainCurrency(userid: string) {
-//   try {
-//     return await db.query(
-//       sql`SELECT currency.name, wallets.user_id, wallets.amount, wallets.currency_id FROM wallets 
-//       JOIN currency ON wallets.currency_id = currency.id WHERE wallets.user_id = ${userid}`,
-//     );
-//   } catch (error) {
-//     console.error(error);
-//     return error;
-//   }
-// }
