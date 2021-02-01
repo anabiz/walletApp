@@ -57,3 +57,14 @@ export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
   }
   return await transaction.createTransaction(input);
 }
+
+export async function updateUserType( userId: string, userType: string) {
+  try {
+    return db
+      .query(sql`UPDATE users SET user_type = ${userType} WHERE id = ${userId}`)
+      .then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+}
