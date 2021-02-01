@@ -2,8 +2,7 @@ import { Request, Response } from "express";
 import { validateAdminFundAcount } from "../../schema/validation/index";
 import { getUserById } from "../../services/userService";
 import { getExchangeRate } from "../../util/index";
-//import {getUserMainWallet} from "../../services/walletService";
-import { getMainWalletAndCurrencyInfo, updateWalletById, getWalletAndCurrencyInfo } from "../../services/walletService"
+import { getMainWalletAndCurrencyInfo, updateWalletById, getWalletAndCurrencyInfo } from "../../services/walletService";
 
 
 const adminFund = async (req: Request, res: Response) => {
