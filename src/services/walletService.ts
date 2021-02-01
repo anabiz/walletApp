@@ -112,3 +112,15 @@ export async function getUserMainWallet(userId: string) {
     return error.message;
   }
 }
+
+export async function updateWalletBallanceAndMainCurrency(newBallance: number, currency_id: string, walletId: string) {
+  try {
+    return db
+      .query(
+        sql`UPDATE wallets SET amount = ${newBallance} , currency_id = ${currency_id} WHERE id = ${walletId} RETURNING *`,
+      )
+      .then((data) => data);
+  } catch (error) {
+    return error.message;
+  }
+}
