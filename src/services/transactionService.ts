@@ -23,6 +23,18 @@ export async function getUnapprovedTransactions() {
   }
 }
 
+
+export async function getAllTransactions() {
+  try {
+    return db
+      .query(sql`SELECT * FROM transactions`)
+      .then((data) => data);
+  } catch (error) {
+    console.error(error);
+    return -1;
+  }
+}
+
 export async function approveTransaction(id: string) {
   try {
     return db

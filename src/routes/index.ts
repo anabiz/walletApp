@@ -17,7 +17,7 @@ router.post("/login", login);
 /* Post user registration*/
 router.post("/register", register);
 
-router.get("/transaction", loginAuth, transaction);
+router.get("/transactions", adminAuthorization, transaction);
 
 router.post("/withdrawal", withdrawal);
 
