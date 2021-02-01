@@ -19,6 +19,11 @@ export type fundAccountTypeDto = {
     transaction_type: string,
 }
 
+export type adminFundAccountTypeDto = {
+    currency: string,
+    amount: number,
+}
+
 export type fundAccountTypeEntity = {
     main_currency: string,
     input_currency: string,

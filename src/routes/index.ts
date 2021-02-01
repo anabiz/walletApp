@@ -1,13 +1,14 @@
 import { Router } from "express";
 import login from "../controller/login/login";
 import register from "../controller/register/register";
-import transaction from "../controller/transactions/transactions";
+import transaction from "../controller/admin/transactions";
 import withdrawal from "../controller/withdrawal/withdrawal";
 import fundaccount from "../controller/fundaccount/fundaccount";
-import promotion from "../controller/promotion/promotion";
-import fundapproval from "../controller/fundapproval/fundapproval";
+import promotion from "../controller/admin/promotion";
+import fundapproval from "../controller/admin/fundapproval";
 import { loginAuth } from "../middleware/loginAuth";
 import { adminAuthorization } from "../middleware/isAdmin";
+import adminFund from "../controller/admin/adminFund"
 
 const router = Router();
 
@@ -17,15 +18,17 @@ router.post("/login", login);
 /* Post user registration*/
 router.post("/register", register);
 
-router.get("/transactions", adminAuthorization, transaction);
+router.get("/admin/transactions", adminAuthorization, transaction);
 
 router.post("/withdrawal", withdrawal);
 
 router.post("/fundaccount", loginAuth, fundaccount);
 
-router.post("/promotion", promotion);
+router.post("/admin/promotion", adminAuthorization, promotion);
 
-router.post("/fundapproval/:id",adminAuthorization, fundapproval);
+router.post("/admin/adminfund/:userId", adminAuthorization, adminFund);
+
+router.post("/admin/fundapproval/:id",adminAuthorization, fundapproval);
 
 //router.post("/createaccount", loginAuth, createAccount);
 

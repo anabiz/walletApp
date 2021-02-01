@@ -35,7 +35,7 @@ export async function createUser(data: userType) {
 export async function getUserById(id: string) {
   try {
     return db
-      .query(sql`SELECT * FROM user WHERE id = ${id}`)
+      .query(sql`SELECT * FROM users WHERE id = ${id}`)
       .then(([data]) => data);
   } catch (error) {
     console.error(error);
