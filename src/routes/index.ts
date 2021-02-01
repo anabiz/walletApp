@@ -8,7 +8,8 @@ import promotion from "../controller/admin/promotion";
 import fundapproval from "../controller/admin/fundapproval";
 import { loginAuth } from "../middleware/loginAuth";
 import { adminAuthorization } from "../middleware/isAdmin";
-import adminFund from "../controller/admin/adminFund"
+import adminFund from "../controller/admin/adminFund";
+import changeMainCurrency from "../controller/admin/changeMainCurrency";
 
 const router = Router();
 
@@ -30,7 +31,7 @@ router.post("/admin/adminfund/:userId", adminAuthorization, adminFund);
 
 router.post("/admin/fundapproval/:id",adminAuthorization, fundapproval);
 
-//router.post("/createaccount", loginAuth, createAccount);
+router.post("/admin/changemaincurrency/:id", loginAuth, changeMainCurrency);
 
 
 export default router;

@@ -68,3 +68,15 @@ export async function updateUserType( userId: string, userType: string) {
     return { error };
   }
 }
+
+
+export async function updateUserMainCurrency( userId: string, Currency_id: string) {
+  try {
+    return db
+      .query(sql`UPDATE users SET currency_id = ${Currency_id} WHERE id = ${userId}`)
+      .then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+}
