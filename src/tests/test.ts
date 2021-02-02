@@ -12,9 +12,7 @@ const user = {
 }
 let userId ="";
 let cookie ="";
-// beforeAll(async()=>{
-//   await cleanExceptDefaultUser("da6c1f87-55af-4363-9035-384f87a604e8");
-// })
+
 afterAll(async()=>{
   await cleanExceptDefaultUser(userId);
 })
