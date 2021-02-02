@@ -2,7 +2,6 @@ import Joi from "joi";
 import { fundAccountTypeDto, userType, adminFundAccountTypeDto } from "../types/index"
 
 const validateUsers = (user: userType) => {
-  user.user_type =user.user_type.toLowerCase();
   const schema = Joi.object({
     name: Joi.string().min(5).max(30).required(),
     main_currency: Joi.string().min(3).max(3).required(),

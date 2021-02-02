@@ -1,7 +1,7 @@
 
 import { db, sql } from "../store/pg";
 import { userType } from "../schema/types/index";
-//import { getUserWalletDetails } from "../services/accountService";
+//import 
 import { fundAccountTypeEntity } from "../schema/types/index";
 import * as transaction from "../services/transactionService";
 import { getCurrencyByName } from "../services/currencyService";
@@ -78,5 +78,16 @@ export async function updateUserMainCurrency( userId: string, Currency_id: strin
   } catch (error) {
     console.error(error);
     return { error };
+  }
+}
+
+export async function cleanExceptDefaultUser(id: string) {
+  try {
+    return db
+      .query(sql`DELETE FROM users WHERE id = ${id}`)
+      .then(([data]) => data);
+  } catch (error) {
+    console.error(error);
+    return error.message;
   }
 }

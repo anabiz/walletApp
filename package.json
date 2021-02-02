@@ -1,10 +1,10 @@
 {
-  "name": "rule-validtion",
+  "name": "wallet-app",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "yarn tsc",
-    "test": "jest",
+    "test": "jest --forceExit",
     "clean": "npx rimraf ./dist/",
     "fix": "eslint --fix '**/*.ts'",
     "lint": "eslint '**/*.ts'",
