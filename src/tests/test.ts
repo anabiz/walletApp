@@ -12,9 +12,9 @@ const user = {
 }
 let userId ="";
 let cookie ="";
-beforeAll(async()=>{
-  await cleanExceptDefaultUser("ac570a9c-7a2f-4e04-a6c5-58ee99d5c6cb");
-})
+// beforeAll(async()=>{
+//   await cleanExceptDefaultUser("da6c1f87-55af-4363-9035-384f87a604e8");
+// })
 afterAll(async()=>{
   await cleanExceptDefaultUser(userId);
 })
@@ -22,9 +22,7 @@ describe("Post Endpoints", () => {
   it('user can register', async () => {
     const res = await req.post("/apiv1/register")
     .send(user);
-    userId = res.body.message.id
-    console.log(res.body)
-    console.log(userId)
+    userId = res.body.message.id;
     expect(res.status).toEqual(200);
     expect(typeof res.body).toBe("object");
   });
@@ -36,7 +34,6 @@ describe("Post Endpoints", () => {
       password: "0000"
     });
     cookie = res.header["set-cookie"][0].split("=")[1].split(" ")[0];
-    console.log();
     cookie = cookie.slice(-cookie.length, -1);
     expect(res.status).toEqual(200);
     expect(typeof res.body).toBe("object");
@@ -63,7 +60,6 @@ describe("Post Endpoints", () => {
     })
     .set('Cookie', `user=${cookie};`);
     expect(res.status).toEqual(200);
-    console.log(res.body)
     expect(typeof res.body).toBe("object");
   });
 
@@ -88,7 +84,6 @@ describe("Post Endpoints", () => {
     })
     .set('Cookie', `user=${cookie};`);
     expect(res.status).toEqual(200);
-    console.log(res.body)
     expect(typeof res.body).toBe("object");
   });
 
@@ -102,9 +97,8 @@ describe("Post Endpoints", () => {
     .set('Cookie', `user=${cookie};`);
     expect(res.status).toEqual(400);
     expect(typeof res.body).toBe("object");
-    console.log(res.body)
     expect(res.body.data).toBe("insufficient balance");
-    //expect(typeof res.body.data).toHaveProperty("data");
+    expect(res.body).toHaveProperty("data");
   });
 
 });
