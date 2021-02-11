@@ -13,7 +13,7 @@ const login = (req: Request, res: Response) => {
         const access_token = jwt.sign(
           user,
           `${process.env.ACCESS_TOKEN_SECRET}`,
-          { expiresIn: "5m" },
+          { expiresIn: "1440m" },
         );
         res.cookie("user", access_token);
         return res.status(200).json({

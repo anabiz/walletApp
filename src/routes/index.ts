@@ -10,6 +10,7 @@ import { loginAuth } from "../middleware/loginAuth";
 import { adminAuthorization } from "../middleware/isAdmin";
 import adminFund from "../controller/admin/adminFund";
 import changeMainCurrency from "../controller/admin/changeMainCurrency";
+import user from "../controller/user/user";
 
 const router = Router();
 
@@ -18,6 +19,8 @@ router.post("/login", login);
 
 /* Post user registration*/
 router.post("/register", register);
+
+router.get("/user/:id", loginAuth, user);
 
 router.get("/admin/transactions", adminAuthorization, transaction);
 

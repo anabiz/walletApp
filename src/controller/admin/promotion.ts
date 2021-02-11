@@ -11,6 +11,9 @@ const promotion = async (req: Request, res: Response) => {
   try {
     const userId = req.params.id;
     const user = await getUserById(userId);
+    if(!user){
+      throw Error;
+    }
     if (user.user_type == "noob") {
       await updateUserType(user.id, "elit");
       res.status(200).json({ data: `${user.name} has been promoted to "elit"` });

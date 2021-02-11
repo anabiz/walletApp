@@ -13,6 +13,7 @@ export const loginAuth = async (
       `${process.env.ACCESS_TOKEN_SECRET}`,
     );
     if (!user) return res.status(404).json("unauthorised");
+    req.user = user;
     next();
     return;
   } catch (error) {
