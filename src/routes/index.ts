@@ -11,6 +11,7 @@ import { adminAuthorization } from "../middleware/isAdmin";
 import adminFund from "../controller/admin/adminFund";
 import changeMainCurrency from "../controller/admin/changeMainCurrency";
 import user from "../controller/user/user";
+import ping from "../controller/ping/checkEndPoint";
 
 const router = Router();
 
@@ -19,6 +20,8 @@ router.post("/login", login);
 
 /* Post user registration*/
 router.post("/register", register);
+
+router.get("/checkapp", ping);
 
 router.get("/user/:id", loginAuth, user);
 
